@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.nio.charset.StandardCharsets;
-
+//Сеньор Лид Гуру Архитектор Стафф Принципл Проджект Лидер
 public class DatagramServer {
     public static void main(String[] args) throws IOException {
         try (var datagramSocket = new DatagramSocket(8085)) {
