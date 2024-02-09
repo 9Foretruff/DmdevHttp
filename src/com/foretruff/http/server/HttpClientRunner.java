@@ -28,6 +28,5 @@ public class HttpClientRunner {
 //        System.out.println(response.headers());
 //        System.out.println(response.body());
         System.out.println(response3.get().body());
-
     }
 }
