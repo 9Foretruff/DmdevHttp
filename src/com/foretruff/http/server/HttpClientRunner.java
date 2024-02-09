@@ -18,13 +18,13 @@ public class HttpClientRunner {
 
         var request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8085"))
-                .header("content-type","application/json")
+                .header("content-type", "application/json")
                 .POST(ofFile(Path.of("C:\\Users\\mi200\\IdeaProjects\\DmdevHttp\\photos\\lesson17\\first.json")))
                 .build();
 
-            var response = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-            var response2 = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-            var response3 = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+        var response = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+        var response2 = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+        var response3 = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 //        System.out.println(response.headers());
 //        System.out.println(response.body());
         System.out.println(response3.get().body());

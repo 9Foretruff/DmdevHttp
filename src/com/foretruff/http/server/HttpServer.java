@@ -22,7 +22,7 @@ public class HttpServer {
 
     public void run() {
         try (var serverSocket = new ServerSocket(port)) {
-            while (!stopped){
+            while (!stopped) {
                 var socket = serverSocket.accept();
                 System.out.println("Socket accepted:");
                 pool.submit(() -> processSocket(socket));
