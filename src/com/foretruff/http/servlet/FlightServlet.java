@@ -17,7 +17,7 @@ public class FlightServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
 
-        try (var writer = resp.getWriter()) {
+        var writer = resp.getWriter();
             writer.write("<h1>Список перелетов: </h1>");
             writer.write("<ul>");
             flightService.findAll().forEach(flightDto -> {
@@ -28,6 +28,6 @@ public class FlightServlet extends HttpServlet {
                         """.formatted(flightDto.getId(),flightDto.getDescription()));
             });
             writer.write("</ul>");
-        }
+
     }
 }
