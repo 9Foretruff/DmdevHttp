@@ -18,10 +18,11 @@ public class TicketService {
     public List<TicketDto> findAllByFlightId(Long flightId) {
         return ticketDao.findAllByFlightId(flightId)
                 .stream()
-                .map(ticketEntity -> new TicketDto(
-                        ticketEntity.getId(),
-                        ticketEntity.getFlightId(),
-                        ticketEntity.getSeatNo()))
+                .map(ticketEntity -> TicketDto.builder()
+                        .id(ticketEntity.getId())
+                        .flightId(ticketEntity.getFlightId())
+                        .seatNo(ticketEntity.getSeatNo())
+                        .build())
                 .collect(toList());
     }
 
