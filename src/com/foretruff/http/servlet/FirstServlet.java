@@ -9,17 +9,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
+import java.util.Map;
 
 @WebServlet("/first")
 public class FirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getHeader("user-agent"));
-        var headerNames = req.getHeaderNames();
-        while (headerNames.hasMoreElements()) {
-            var s = headerNames.nextElement();
-            System.out.println(s + ": " + req.getHeader(s));
-        }
+        var paramValue = req.getParameter("param");
+        var parameterMap = req.getParameterMap();
+        System.out.println();
+
+
+//        System.out.println(req.getHeader("user-agent"));
+//        var headerNames = req.getHeaderNames();
+//        while (headerNames.hasMoreElements()) {
+//            var s = headerNames.nextElement();
+//            System.out.println(s + ": " + req.getHeader(s));
+//        }
 
         resp.setContentType("text/html; charset=UTF-8");
         resp.setHeader("token","1000");
@@ -29,6 +35,11 @@ public class FirstServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        var parameterMap = req.getParameterMap();
+        System.out.println(parameterMap);
+    }
 
     //    @Override
 //    public void init() throws ServletException {
