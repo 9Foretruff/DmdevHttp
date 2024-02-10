@@ -6,10 +6,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @WebServlet("/first")
 public class FirstServlet extends HttpServlet {
@@ -28,7 +31,7 @@ public class FirstServlet extends HttpServlet {
 //        }
 
         resp.setContentType("text/html; charset=UTF-8");
-        resp.setHeader("token","1000");
+        resp.setHeader("token", "1000");
 //        resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
         try (var writer = resp.getWriter()) {
             writer.write("<h1>Hello from servlet  Привіт!</h1>");
@@ -37,8 +40,14 @@ public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var parameterMap = req.getParameterMap();
-        System.out.println(parameterMap);
+//        var parameterMap = req.getParameterMap();
+//        System.out.println(parameterMap);
+        try (var reader = req.getReader();
+             var lines = reader.lines()) {
+//            String text = lines.collect(Collectors.joining("\n"));
+//            System.out.println(text);
+            lines.forEach(System.out::println);
+        }
     }
 
     //    @Override
