@@ -17,12 +17,12 @@ public class DispatcherServlet extends HttpServlet {
         requestDispatcher.include(req, resp);
 
         resp.setContentType("text/html; charset=UTF-8");
+//        resp.sendRedirect("/flights");
         try (var writer = resp.getWriter()) {
             writer.write("hello!!!"); // нечего не  запишет
             System.out.println("hello");
         }
 
-//        resp.sendRedirect("/flights");
     }
 
 }
