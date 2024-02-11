@@ -22,7 +22,7 @@ public class DispatcherServlet extends HttpServlet {
             System.out.println("hello");
         }
 
-        resp.sendRedirect("/flights");
+//        resp.sendRedirect("/flights");
     }
 
 }
