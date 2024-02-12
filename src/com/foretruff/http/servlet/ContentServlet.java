@@ -1,6 +1,7 @@
 package com.foretruff.http.servlet;
 
 import com.foretruff.http.dto.FlightDto;
+import com.foretruff.http.dto.UserDto;
 import com.foretruff.http.service.FlightService;
 import com.foretruff.http.util.JspHelper;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
@@ -23,7 +25,8 @@ public class ContentServlet extends HttpServlet {
         var flightDtos = flightService.findAll();
         req.setAttribute("flights", flightDtos);
         req.getSession().setAttribute("flightsMap", flightDtos.stream()
-                .collect(toMap(FlightDto::getId,FlightDto::getDescription)));
+                .collect(toMap(FlightDto::getId,
+                        Function.identity())));
         req.getRequestDispatcher(JspHelper.getPath("content")).forward(req,resp);
     }
 }
