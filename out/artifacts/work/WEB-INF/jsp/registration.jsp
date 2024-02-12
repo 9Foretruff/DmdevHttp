@@ -39,6 +39,7 @@
         <div style="color: red">
             <c:forEach var="error" items="${requestScope.errors}">
                 <span>${error.message}</span>
+                <br>
             </c:forEach>
         </div>
     </c:if>
