@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<img src="${pageContext.request.contextPath}/images/users/image111.png" alt="User image">
+
 <form action="${pageContext.request.contextPath}/registration" method="post" enctype="multipart/form-data">
     <label for="name">Name:
         <input type="text" name="name" id="name">
