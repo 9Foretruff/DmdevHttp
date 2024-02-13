@@ -12,8 +12,8 @@ import java.util.Optional;
 public class UserDao implements Dao<Long, UserEntity> {
     private static final UserDao INSTANCE = new UserDao();
     public static final String SAVE_SQL = """
-            INSERT INTO users(name, birthday, email, password, role, gender)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO users(name, birthday, email, image, password, role, gender)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """;
 
     private UserDao() {
@@ -47,9 +47,10 @@ public class UserDao implements Dao<Long, UserEntity> {
             saveStatement.setObject(1, entity.getName());
             saveStatement.setObject(2, entity.getBirthday());
             saveStatement.setObject(3, entity.getEmail());
-            saveStatement.setObject(4, entity.getPassword());
-            saveStatement.setObject(5, entity.getRole().name());
-            saveStatement.setObject(6, entity.getGender().name());
+            saveStatement.setObject(4, entity.getImage());
+            saveStatement.setObject(5, entity.getPassword());
+            saveStatement.setObject(6, entity.getRole().name());
+            saveStatement.setObject(7, entity.getGender().name());
             
             saveStatement.executeUpdate();
 

@@ -13,6 +13,7 @@ public class FlightEntity {
     private Integer aircraftId;
     private FlightStatus status;
 
+
     public FlightEntity(Long id, String flightNo, LocalDateTime departureDate, String departureAirportCode, LocalDateTime arrivalDate, String arrivalAirportCode, Integer aircraftId, FlightStatus status) {
         this.id = id;
         this.flightNo = flightNo;

@@ -8,6 +8,7 @@ import com.foretruff.http.exception.ValidationException;
 import com.foretruff.http.mapper.CreateUserMapper;
 import com.foretruff.http.validator.CreateUserValidator;
 import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -17,7 +18,9 @@ public class UserService {
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
     private final UserDao userDao = UserDao.getInstance();
     public final CreateUserMapper createUserMapper = CreateUserMapper.getInstance();
+    private final ImageService imageService = ImageService.getInstance();
 
+    @SneakyThrows
     public Long save(CreateUserDto userDto) {
         // validation
         // map
@@ -28,7 +31,9 @@ public class UserService {
             throw new ValidationException(validationResult.getErrors());
         }
         var userEntity = createUserMapper.mapFrom(userDto);
+        imageService.upload(userEntity.getImage(), userDto.getImage().getInputStream());
         var save = userDao.save(userEntity);
+
         return save.getId();
     }
 

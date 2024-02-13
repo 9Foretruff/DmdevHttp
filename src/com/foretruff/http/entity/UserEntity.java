@@ -13,6 +13,7 @@ public class UserEntity {
     private String name;
     private LocalDate birthday;
     private String email;
+    private String image;
     private String password;
     private RoleEnum role;
     private GenderEnum gender;
