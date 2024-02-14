@@ -16,9 +16,9 @@
 
 
     <error-page>
-        <exception-type>java.lang.Throwable</exception-type>
+<!--        <exception-type>java.lang.RuntimeException</exception-type>-->
+        <error-code>404</error-code>
         <location>/WEB-INF/jsp/500.jsp</location>
-<!--        <error-code>500</error-code>-->
     </error-page>
 
 </web-app>
