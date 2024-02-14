@@ -3,6 +3,7 @@ package com.foretruff.http.servlet;
 import com.foretruff.http.dto.UserDto;
 import com.foretruff.http.service.UserService;
 import com.foretruff.http.util.JspHelper;
+import com.foretruff.http.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import lombok.SneakyThrows;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet("/login")
+@WebServlet(UrlPath.LOGIN)
 public class LoginServlet extends HttpServlet {
     private final UserService userService = UserService.getInstance();
 
