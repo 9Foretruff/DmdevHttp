@@ -32,7 +32,7 @@ public class ImageService {
     @SneakyThrows
     public Optional<InputStream> get(String imagePath) {
         var imageFullPath = Path.of(basePath, imagePath);
-
+        
         return Files.exists(imageFullPath)
                 ? Optional.of(Files.newInputStream(imageFullPath))
                 : empty();
