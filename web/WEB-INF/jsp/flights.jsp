@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<%@include file="Header.jsp" %>
 <h1>Список перелетов: </h1>
 <ul>
     <c:forEach var="flight" items="${requestScope.flights}">
