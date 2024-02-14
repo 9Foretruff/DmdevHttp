@@ -10,6 +10,8 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet("/images/*")
 public class ImageServlet extends HttpServlet {
@@ -19,7 +21,7 @@ public class ImageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var requestUri = req.getRequestURI();
-        var imagePath = requestUri.replace("/images", "");
+        var imagePath = URLDecoder.decode(requestUri.replace("/images", ""), StandardCharsets.UTF_8);
 
         imageService.get(imagePath).ifPresentOrElse(image -> {
             resp.setContentType("application/octet-stream");
@@ -29,6 +31,7 @@ public class ImageServlet extends HttpServlet {
 
     @SneakyThrows
     private void writeImage(InputStream image, HttpServletResponse resp) {
+        resp.setContentType("image/png");
         try (var outputStream = resp.getOutputStream();
              image) {
             int currentByte;
