@@ -20,7 +20,7 @@ public class SessionServlet extends HttpServlet {
         var session = req.getSession();
         var user = (UserDto) session.getAttribute(USER);
         if (user == null ){
-            user = UserDto.builder().id(15L).mail("777").build();
+            user = UserDto.builder().id(15L).email("777").build();
             session.setAttribute(USER,user);
         }
 

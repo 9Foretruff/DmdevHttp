@@ -17,7 +17,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
 public class ImageService {
-    public static final ImageService INSTANCE = new ImageService();
+    private static final ImageService INSTANCE = new ImageService();
     private final String basePath = PropertiesUtil.get("image.base.url");
 
     @SneakyThrows

@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 @WebServlet("/images/*")
 public class ImageServlet extends HttpServlet {
 
-    private final ImageService imageService = ImageService.INSTANCE;
+    private final ImageService imageService = ImageService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

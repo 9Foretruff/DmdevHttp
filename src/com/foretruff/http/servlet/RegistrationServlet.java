@@ -18,7 +18,7 @@ import java.io.IOException;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024)
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
-    private final UserService userService = UserService.INSTANCE;
+    private final UserService userService = UserService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
